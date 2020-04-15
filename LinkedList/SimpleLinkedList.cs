@@ -5,18 +5,19 @@ using System.Text;
 namespace LinkedList
 {
 
-    public class Node
+    public class Node<T>
     {
-        public object data { get; set; }
-        public Node nextNode = null;
+        public T data { get; set; }
+        public Node<T> nextNode = null;
+        public Node<T> prevNode = null;
     }
-    public class SimpleLinkedList
+    public class SimpleLinkedList<T>
     {
-        Node Head = null;
-        Node Tail = null;
-        public void AddToLinkedListLast(object data)
+        public Node<T> Head = null;
+        public Node<T> Tail = null;
+        public void AddToLinkedListLast(T data)
         {
-            Node newItem = new Node();
+            Node<T> newItem = new Node<T>();
             newItem.data = data;
             if (Head==null)
             {
@@ -32,21 +33,22 @@ namespace LinkedList
 
                 Tail.nextNode = newItem;
                 Tail = newItem;
+                
                
             }
         }
 
-        public void AddToLinkedListFirst(object data)
+        public void AddToLinkedListFirst(T data)
         {
-            Node newItem = new Node();
+            Node<T> newItem = new Node<T>();
             newItem.data = data;
             newItem.nextNode = Head;
             Head = newItem;
         }
-
+      
         public void ReadAll()
         {
-            Node current = Head;
+            Node<T> current = Head;
             while (current.nextNode!=null)
             {
                 Console.WriteLine(current.data);
